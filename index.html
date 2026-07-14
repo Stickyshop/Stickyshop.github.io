@@ -6,13 +6,13 @@
     <title>Sticky Shop | Shop ✨</title>
     <style>
         :root {
-            --primary-red: #ff4d4d;
-            --light-red: #ffe5e5;
-            --dark-red: #d90429;
+            --primary-red: #d90429; /* Darker red primary */
+            --light-red: #fce8e6;
+            --dark-red: #800000;    /* Deep, rich dark red */
             --soft-cream: #fffafa;
-            --text-color: #332222;
-            --accent-gold: #d4af37;
-            --border-color: #f1dbdb;
+            --text-color: #2b1111;
+            --accent-gold: #c5a059;
+            --border-color: #e8c5c5;
         }
 
         * {
@@ -37,7 +37,7 @@
 
         header {
             background-color: #ffffff;
-            border-bottom: 2px solid var(--light-red);
+            border-bottom: 2px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -74,15 +74,16 @@
         }
 
         .nav-links a:hover {
-            color: var(--dark-red);
+            color: var(--primary-red);
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--light-red) 0%, #fff0f0 100%);
+            background: linear-gradient(135deg, #f7d6d6 0%, #fff2f2 100%);
             padding: 80px 5%;
             text-align: center;
             border-radius: 0 0 50px 50px;
             margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-red);
         }
 
         .hero h1 {
@@ -93,7 +94,8 @@
 
         .hero p {
             font-size: 18px;
-            color: #5c4545;
+            color: #4a2d2d;
+            font-weight: 500;
         }
 
         #product-container {
@@ -109,7 +111,7 @@
             border-radius: 20px;
             padding: 20px;
             text-align: center;
-            border-bottom: 4px solid var(--primary-red);
+            border-bottom: 4px solid var(--dark-red);
             transition: transform 0.3s;
         }
 
@@ -139,8 +141,8 @@
             font-size: 45px;
         }
 
-        .product-name { font-weight: bold; margin-bottom: 8px; }
-        .product-price { color: var(--accent-gold); font-weight: bold; margin-bottom: 15px; }
+        .product-name { font-weight: bold; margin-bottom: 8px; color: var(--text-color); }
+        .product-price { color: var(--dark-red); font-weight: bold; margin-bottom: 15px; }
 
         .order-btn {
             display: inline-block;
@@ -154,7 +156,7 @@
         }
 
         .order-btn:hover {
-            background-color: #ff1a1a;
+            background-color: var(--primary-red);
         }
 
         .socials-container {
@@ -183,10 +185,11 @@
         }
 
         footer {
-            background-color: var(--light-red);
+            background-color: #f7e6e6;
             text-align: center;
             padding: 40px;
             margin-top: 60px;
+            border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
@@ -204,8 +207,8 @@
 
     <main class="container">
         <div class="hero">
-            <h1>Glow Your Own Way ✨</h1>
-            <p>High-quality beauty essentials tailored for your perfect look.</p>
+            <h1>Stick Your Style Anywhere ✨</h1>
+            <p>Customize your world with our collection of aesthetic stickers and pins.</p>
             <div class="socials-container" id="socials-list">
                 <!-- Social links generate dynamically from admin panel -->
             </div>
@@ -224,10 +227,11 @@
     </footer>
 
     <script>
+        // Updated default placeholders to match stickers and pins!
         var defaultProducts = [
-            { id: 1, name: "Hydrating Velvet Lip Gloss", price: "1,200 DA", icon: "💄" },
-            { id: 2, name: "Soft Glow Powder Blush", price: "1,500 DA", icon: "✨" },
-            { id: 3, name: "Glow Vitamin C Serum", price: "2,200 DA", icon: "🌸" }
+            { id: 1, name: "Aesthetic Vinyl Sticker Pack", price: "400 DA", icon: "✨" },
+            { id: 2, name: "Custom Handmade Clay Pin", price: "600 DA", icon: "🎨" },
+            { id: 3, name: "Holographic Starry Sticker", price: "150 DA", icon: "⭐️" }
         ];
 
         if (!localStorage.getItem('sticky_products')) {
