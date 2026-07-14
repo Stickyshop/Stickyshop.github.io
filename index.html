@@ -6,9 +6,9 @@
     <title>Sticky Shop | Shop ✨</title>
     <style>
         :root {
-            --primary-red: #d90429; /* Darker red primary */
+            --primary-red: #d90429;
             --light-red: #fce8e6;
-            --dark-red: #800000;    /* Deep, rich dark red */
+            --dark-red: #800000;
             --soft-cream: #fffafa;
             --text-color: #2b1111;
             --accent-gold: #c5a059;
@@ -197,7 +197,7 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">Sticky Shop ✨</a>
+            <a href="#" class="logo" id="nav-logo">Sticky Shop ✨</a>
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#shop">Shop</a></li>
@@ -207,27 +207,22 @@
 
     <main class="container">
         <div class="hero">
-            <h1>Stick Your Style Anywhere ✨</h1>
-            <p>Customize your world with our collection of aesthetic stickers and pins.</p>
-            <div class="socials-container" id="socials-list">
-                <!-- Social links generate dynamically from admin panel -->
-            </div>
+            <h1 id="hero-title">Stick Your Style Anywhere ✨</h1>
+            <p id="hero-subtitle">Customize your world with our collection of aesthetic stickers and pins.</p>
+            <div class="socials-container" id="socials-list"></div>
         </div>
 
         <section id="shop">
-            <h2 style="text-align: center; margin-bottom: 30px; color: var(--dark-red);">Our Collection</h2>
-            <div id="product-container">
-                <!-- Products load dynamically -->
-            </div>
+            <h2 id="catalog-title" style="text-align: center; margin-bottom: 30px; color: var(--dark-red);">Our Collection</h2>
+            <div id="product-container"></div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Sticky Shop. All Rights Reserved.</p>
+        <p id="footer-text">&copy; 2026 Sticky Shop. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Updated default placeholders to match stickers and pins!
         var defaultProducts = [
             { id: 1, name: "Aesthetic Vinyl Sticker Pack", price: "400 DA", icon: "✨" },
             { id: 2, name: "Custom Handmade Clay Pin", price: "600 DA", icon: "🎨" },
@@ -241,6 +236,14 @@
         renderStorefront();
 
         function renderStorefront() {
+            // Load Dynamic Custom Texts
+            document.getElementById('nav-logo').innerText = localStorage.getItem('text_store_logo') || "Sticky Shop ✨";
+            document.getElementById('hero-title').innerText = localStorage.getItem('text_hero_title') || "Stick Your Style Anywhere ✨";
+            document.getElementById('hero-subtitle').innerText = localStorage.getItem('text_hero_subtitle') || "Customize your world with our collection of aesthetic stickers and pins.";
+            document.getElementById('catalog-title').innerText = localStorage.getItem('text_catalog_title') || "Our Collection";
+            document.getElementById('footer-text').innerHTML = localStorage.getItem('text_footer_text') || "&copy; 2026 Sticky Shop. All Rights Reserved.";
+
+            // Load Dynamic Products
             var products = JSON.parse(localStorage.getItem('sticky_products')) || [];
             var container = document.getElementById('product-container');
             container.innerHTML = "";
